@@ -1,0 +1,17 @@
+
+---
+- name: Deploy Maven application
+  hosts: local
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create deployment directory
+      ansible.builtin.file:
+        path: /mnt/c/StudentDeployment
+        state: directory
+
+    - name: Copy Maven JAR file
+      ansible.builtin.copy:
+        src: /mnt/c/StudentDeployment/staging/student-app-1.0.jar
+        dest: /mnt/c/StudentDeployment/student-app-1.0.jar
